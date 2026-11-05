@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "rest_framework",
     "corsheaders",
+
+    # Custom Apps
     "account",
 ]
 
@@ -161,3 +163,6 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
 ]
+
+# Custom account AUTH model
+AUTH_USER_MODEL = 'account.User'
