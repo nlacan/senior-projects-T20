@@ -1,11 +1,11 @@
 // communication to the backend lives here
 // for local dev: set VITE_USE_MOCK=true in frontend/.env to work without the Django backend running
-const API: string = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+const API: string = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 const USE_MOCK: boolean = import.meta.env.VITE_USE_MOCK === 'true'
 
 // TODO: need to confirm actual login and register paths with daniel
-const LOGIN_PATH = '/auth/login/'
-const REGISTER_PATH = '/auth/register/'  
+const LOGIN_PATH = '/account/token/'
+const REGISTER_PATH = '/register/'  
 const AUTH_SCHEME = 'Bearer'
 
 // TODO: what the backend sends back after a successful login (i think? confirm with daniel)
@@ -27,8 +27,8 @@ export function clearTokens(): void {
 }
 
 interface RequestOptions {
-  method?: string
-  body?: string
+    method?: string
+    body?: string
 }
 
 // fake backend for my development only
