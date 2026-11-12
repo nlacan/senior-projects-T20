@@ -31,6 +31,11 @@ interface RequestOptions {
     body?: string
 }
 
+interface ApiResponse<T> {
+  status: string;
+  data: T;
+}
+
 // fake backend for my development only
 function mockRequest<T>(path: string, options: RequestOptions = {}): T {
     const body: { email?: string; password?: string } = options.body ? JSON.parse(options.body) : {}
@@ -103,3 +108,6 @@ export const register = (email: string, password: string): Promise<void> =>
 
 export const login = (email: string, password: string): Promise<AuthTokens> =>
     request<AuthTokens>(LOGIN_PATH, { method: 'POST', body: JSON.stringify({ email, password }) })
+
+export const program = (): Promise<ApiResponse<string>> =>
+    request<ApiResponse<string>>("/programs/", { method: 'GET' })
