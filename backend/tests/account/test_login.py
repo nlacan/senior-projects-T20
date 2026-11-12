@@ -49,10 +49,10 @@ class UserDetailViewTests(APITestCase):
     def test_post_user_error(self):
         """Ensure wrong method on API call returns error code"""
         
-        # 3. Authenticate the test client using force_authenticate (or by obtaining a token)
+        # Authenticate the test client using force_authenticate (or by obtaining a token)
         self.client.force_authenticate(user=self.user)
 
-        # 4. Make a GET request to the profile endpoint
+        # Make a POST request to the profile endpoint
         response = self.client.post(self.profile_url)
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
 
